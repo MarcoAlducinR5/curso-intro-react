@@ -1,0 +1,7 @@
+.TodoSearch{
+    border-radius: 10px 10px 10px 10px;
+    border: 10px double;
+}
+input{
+    text-align: center;
+}

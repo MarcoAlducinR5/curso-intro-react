@@ -1,0 +1,24 @@
+.TodoItem{
+    border-top: solid 3px #290b5f;
+    border-bottom : solid 3px #290b5f;
+    border-left: solid 3px #290b5f;
+    border-right: solid 3px #290b5f;
+}
+p{
+    font-style: italic;
+    font-family: verdana;
+}
+span{
+    font-family: Impact;
+}
+.Eliminar:hover{
+    color: red;
+}
+.correcto{
+    color: green;
+    font-weight: bold;
+}
+.cumplido{
+    color: #a39f9f;
+    text-decoration: line-through;
+}
