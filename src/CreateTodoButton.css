@@ -1,5 +1,18 @@
 .CreateTodoButton{
-    border-radius: 2em;
+    font-size: 15px;
+    margin: 15px 0px 15px 0px;
+    padding: 10px;
+    border-radius: 50px;
+    border: solid 1px white;
+    font-weight: bold;
+}
+.CreateTodoButton:hover{
+    border: solid 1px chocolate;
     background-color: chocolate;
-    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+.CreateTodoButton:active{
+    border: solid 1px #D2FF3A;
+    background-color: #D2FF3A;
+    color: black;
 }

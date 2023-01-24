@@ -1,7 +1,12 @@
 .TodoSearch{
-    border-radius: 10px 10px 10px 10px;
-    border: 10px double;
-}
-input{
+    font-size: 15px;
+    padding: 10px;
+    /*definicio del borde de las esquinas de todo el elemento*/
+    border-radius: 50px;
     text-align: center;
+    margin: 15px 0px 15px 0px;
+}
+/*Accion al seleccionar un input: fondo del input*/
+.TodoSearch:focus{
+    background: #D2FF3A;
 }

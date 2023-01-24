@@ -1,10 +1,11 @@
 .TodoList{
-    background-color: rgb(218, 208, 121);
+    background-color: white;
+    /*colocar una sombra alrededor de la caja del elemento*/
+    box-shadow: 5px 5px 10px 5px #D2FF3A;
+    /*el contorno del borde del elemento: border-arriba/abajo-izquierda/derecha-*/
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
-ul{
-    border-top: dashed 5px green;
-    border-bottom : dashed 5px green;
-    border-left: dashed 5px green;
-    border-right: dashed 5px green;
-    text-align: center;
+.TodoList ul{
+    list-style: none;
 }

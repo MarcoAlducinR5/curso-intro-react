@@ -7,4 +7,5 @@ function TodoCounter() {
   );
 }
 
+/*El encapsulamiento de JavaScript*/
 export { TodoCounter };

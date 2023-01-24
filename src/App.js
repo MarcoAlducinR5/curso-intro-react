@@ -14,6 +14,7 @@ const todos = [
 
 function App() {
   return (
+    /*Renderizado de una sola etiqueta por componente*/
     <React.Fragment>
       <TodoCounter />
 
@@ -21,6 +22,7 @@ function App() {
       
       <TodoList>
         {todos.map(todo => (
+          /*Propiedad key: un identificador unico dentro de una lista*/
           <TodoItem 
             key={todo.text} 
             text={todo.text} 
