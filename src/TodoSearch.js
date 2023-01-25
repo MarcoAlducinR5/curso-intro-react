@@ -1,10 +1,8 @@
 import React from 'react';
 import './TodoSearch.css';
 
-function TodoSearch() {
-  /*Linea que nos permite el uso de estados (o datos a ser modificados) en hooks (funciones para enganchar el estado y usarlo dentro del proyecto) */
-  /*el valor del estado - funcion para actualizar/usar el estado */
-  const [searchValue, setSearchValue] = React.useState('');
+/*Consumiendo las props del estado en TodoSearch */
+function TodoSearch({searchValue, setSearchValue}) {
 
   /*Evento que realiza un filtrado de la lista cada que escriba en el input */
   const onSearchValueChange = (event) => {
@@ -13,11 +11,10 @@ function TodoSearch() {
     setSearchValue(event.target.value);
   };
 
-  return [
+  return (
     /*Para manejar el valor, colocarlo como argumento 'value'*/
-    <input className='TodoSearch' placeholder="Cebolla" value={searchValue} onChange={onSearchValueChange} />,
-    <p>{searchValue}</p>
-  ];
+    <input className='TodoSearch' placeholder="Cebolla" value={searchValue} onChange={onSearchValueChange} />
+  );
 }
 
 export { TodoSearch };

@@ -6,22 +6,45 @@ import { TodoItem } from './TodoItem'
 import { CreateTodoButton } from './CreateTodoButton'
 // import './App.css';
 
-const todos = [
+const defaultTodos = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el curso de intro a React', completed: false },
   { text: 'Lloras con la Llorona', completed: false }
 ];
 
 function App() {
+  /*Creando un estado exclusivo para los Todos */
+  const [todos, setTodos] = React.useState(defaultTodos);
+  /*Trasladando el estado de TodoSearch a App.js */
+  const [searchValue, setSearchValue] = React.useState("");
+
+  /* Contar cuantos Todos tenemos y cuandos completados */
+  const completedTodos = todos.filter( todo => todo.completed ).length;
+  const totalTodos = todos.length;
+
+  /*Filtrar los todos de acuerdo al criterio de busqueda*/
+  let searchedTodos = [];
+  /* Si no se escribe nada, mostrata los Todos, si no, filtrara acorde a lo que escribe sin importar que escriba en minuscula o mayuscula */
+  if(!searchValue.length >= 1 ){
+    searchedTodos = todos;
+  } else{
+    searchedTodos = todos.filter (todo => {
+      const todoText = todo.text.toLowerCase();
+      const searchText = searchValue.toLowerCase();
+      return todoText.includes(searchText);
+    });
+  }
+
   return (
     /*Renderizado de una sola etiqueta por componente*/
     <React.Fragment>
-      <TodoCounter />
+      <TodoCounter total={totalTodos} completed={completedTodos} />
 
-      <TodoSearch />
+      {/*Enviando el estado a TodoSearch */}
+      <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       
       <TodoList>
-        {todos.map(todo => (
+        {searchedTodos.map(todo => (
           /*Propiedad key: un identificador unico dentro de una lista*/
           <TodoItem 
             key={todo.text} 
