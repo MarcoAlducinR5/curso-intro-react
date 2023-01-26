@@ -35,6 +35,36 @@ function App() {
     });
   }
 
+  /* funcion para marcar como completado un Todo */
+  const completeTodo = (text) => {
+    /*Encontrar el index del todo de acuerdo al texto del Todo */
+    const todoIndex = todos.findIndex(todo => todo.text === text);
+
+    /*Clonando el arreglo declarado anteriormente*/
+    const newTodos = [...todos];
+    /*forma corta */
+    /*cambiando la propiedad de completed a true en esa posicion*/
+    newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
+    /*forma larga */
+    /* newTodos[todoIndex] = {
+      text: newTodos[todoIndex].text,
+      completed: true
+    } */
+    /*Re-Renderizar el arreglo de Todos con los nuevos valores */
+    setTodos(newTodos);
+  };
+  
+  /* funcion para eliminar un Todo */
+  const deleteTodo = (text) => {
+    const todoIndex = todos.findIndex(todo => todo.text === text);
+
+    const newTodos = [...todos];
+    /*forma corta */
+    /*usando el metodo splice enviandole que en la posicion tal (todoIndex) e indicandole que solo sera 1 a eliminar*/
+    newTodos.splice(todoIndex, 1);
+    setTodos(newTodos);
+  };
+
   return (
     /*Renderizado de una sola etiqueta por componente*/
     <React.Fragment>
@@ -50,6 +80,8 @@ function App() {
             key={todo.text} 
             text={todo.text} 
             completed={todo.completed} 
+            onComplete={() => completeTodo(todo.text)}
+            onDelete={() => deleteTodo(todo.text)}
           />
         ))}
       </TodoList> 
