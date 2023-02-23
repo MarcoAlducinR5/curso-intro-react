@@ -8,26 +8,48 @@ import { AppUI } from './AppUI';
   { text: 'Lloras con la Llorona', completed: false }
 ]; */
 
-function App() {
+/* Declaracion de un Hook personalizado para el cambio de estado y de localStorage, cambiandolo con el termino "item pero siguiendo la misma logica" */
+function useLocalStorage(itemName, initialValue){
   /* Agregar en una variable el acceso a datos persistentes en el navegador */
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
+  const localStorageItem = localStorage.getItem(itemName);
 
   /* Declarar una variable vacia para el uso de localStorage */ 
-  let parsedTodos;
+  let parsedItem;
 
   /* Evaluar si el navegador no contiene datos persistentes guardados en el navegador, por el hecho de que sea usuario nuevo y no se tenga ningun TODO creado ó tener TODOs creados */ 
-  if(!localStorageTodos){
+  if(!localStorageItem){
     /* Gardado de datos persistentes en el navegador, enviados solo como string por el metodo JSON */
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
   } else {
     /* Conversion de datos a formato JavaScript con el metodo JSON */
-    parsedTodos = JSON.parse(localStorageTodos);
+    parsedItem = JSON.parse(localStorageItem);
   }
 
   /*Creando un estado exclusivo para los Todos */
-  /* parsedTodos: estado que guarda los TODOs obtenidos de localStorage */ 
-  const [todos, setTodos] = React.useState(parsedTodos);
+  /* parsedItem: estado que guarda los TODOs obtenidos de localStorage */ 
+  /* Reutilizacion de otros Hooks ya anteriormente usados */
+  const [item, setItem] = React.useState(parsedItem);
+
+  /* Funcion puente que funciona para actualizar tanto el estado como localStorage */
+  const saveItem = (newItem) => {
+    const stringFieldItem = JSON.stringify(newItem);
+    localStorage.setItem(itemName, stringFieldItem);
+    setItem(newItem);
+  };
+
+  /* Regresando los datos que se requieren al Hook principal */
+  return [
+    item,
+    saveItem,
+  ];
+
+}
+ 
+function App() {
+  /* Declaracion de un hook principal para recibir del Hook personalizado */
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  
   /*Trasladando el estado de TodoSearch a App.js */
   const [searchValue, setSearchValue] = React.useState("");
 
@@ -47,13 +69,6 @@ function App() {
       return todoText.includes(searchText);
     });
   }
-
-  /* Funcion puente que funciona para actualizar tanto el estado como localStorage */
-  const saveTodos = (newTodos) => {
-    const stringFieldTodos = JSON.stringify(newTodos);
-    localStorage.setItem('TODOS_V1', stringFieldTodos);
-    setTodos(newTodos);
-  };
 
   /* funcion para marcar como completado un Todo */
   const completeTodo = (text) => {
