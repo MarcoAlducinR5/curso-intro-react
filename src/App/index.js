@@ -2,15 +2,32 @@ import React from 'react';
 /* Separacion de la parte grafica en un archivo aparte */
 import { AppUI } from './AppUI';
 
-const defaultTodos = [
+/* const defaultTodos = [
   { text: 'Cortar cebolla', completed: true },
   { text: 'Tomar el curso de intro a React', completed: false },
   { text: 'Lloras con la Llorona', completed: false }
-];
+]; */
 
 function App() {
+  /* Agregar en una variable el acceso a datos persistentes en el navegador */
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+  /* Declarar una variable vacia para el uso de localStorage */ 
+  let parsedTodos;
+
+  /* Evaluar si el navegador no contiene datos persistentes guardados en el navegador, por el hecho de que sea usuario nuevo y no se tenga ningun TODO creado ó tener TODOs creados */ 
+  if(!localStorageTodos){
+    /* Gardado de datos persistentes en el navegador, enviados solo como string por el metodo JSON */
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    /* Conversion de datos a formato JavaScript con el metodo JSON */
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
   /*Creando un estado exclusivo para los Todos */
-  const [todos, setTodos] = React.useState(defaultTodos);
+  /* parsedTodos: estado que guarda los TODOs obtenidos de localStorage */ 
+  const [todos, setTodos] = React.useState(parsedTodos);
   /*Trasladando el estado de TodoSearch a App.js */
   const [searchValue, setSearchValue] = React.useState("");
 
@@ -31,6 +48,13 @@ function App() {
     });
   }
 
+  /* Funcion puente que funciona para actualizar tanto el estado como localStorage */
+  const saveTodos = (newTodos) => {
+    const stringFieldTodos = JSON.stringify(newTodos);
+    localStorage.setItem('TODOS_V1', stringFieldTodos);
+    setTodos(newTodos);
+  };
+
   /* funcion para marcar como completado un Todo */
   const completeTodo = (text) => {
     /*Encontrar el index del todo de acuerdo al texto del Todo */
@@ -47,7 +71,8 @@ function App() {
       completed: true
     } */
     /*Re-Renderizar el arreglo de Todos con los nuevos valores */
-    setTodos(newTodos);
+    /* ...pero re-renderizando tambien en el localStorage */
+    saveTodos(newTodos);
   };
   
   /* funcion para eliminar un Todo */
@@ -58,7 +83,8 @@ function App() {
     /*forma corta */
     /*usando el metodo splice enviandole que en la posicion tal (todoIndex) e indicandole que solo sera 1 a eliminar*/
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    /* ...pero re-renderizando tambien en el localStorage */
+    saveTodos(newTodos);
   };
 
   return (
