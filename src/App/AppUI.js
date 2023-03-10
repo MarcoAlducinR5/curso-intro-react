@@ -5,47 +5,41 @@ import { TodoSearch } from '../TodoSearch'
 import { TodoList } from '../TodoList'
 import { TodoItem } from '../TodoItem'
 import { CreateTodoButton } from '../CreateTodoButton'
+/* Importamos el contexto para usarlo en los componentes de la aplicacion */
+import { TodoContext } from '../TodoContext';
 
-function AppUI({
-    /* Recepcion de las propiedades declaradas en App */
-    loading,
-    error,
-    /* ^ Recepcion de los 2 estados de efecto ^ */
-    totalTodos,
-    completedTodos,
-    searchValue,
-    setSearchValue,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
-}){
+function AppUI(){
     return (
         /*Renderizado de una sola etiqueta por componente*/
         <React.Fragment>
-            <TodoCounter total={totalTodos} completed={completedTodos} />
+            <TodoCounter />
 
             {/*Enviando el estado a TodoSearch */}
-            <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+            <TodoSearch />
             
-            <TodoList>
-                {/* Evaluar si hay algiun error, renderiza un mensaje */}
-                {error && <p>Desespérate, hubo un error...</p>}
-                {/* Renderiza un mensaje cuando esta trabajando para mostrar los datos */}
-                {loading && <p>Estamos cargando, no desesperes...</p>}
-                {/* Evaluar la carga y el tamano de los TODOs, renderiza un mensaje */}
-                {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+            <TodoContext.Consumer>
+                {({error, loading, searchedTodos, completeTodo, deleteTodo}) => (
+                    <TodoList>
+                        {/* Evaluar si hay algiun error, renderiza un mensaje */}
+                        {error && <p>Desespérate, hubo un error...</p>}
+                        {/* Renderiza un mensaje cuando esta trabajando para mostrar los datos */}
+                        {loading && <p>Estamos cargando, no desesperes...</p>}
+                        {/* Evaluar la carga y el tamano de los TODOs, renderiza un mensaje */}
+                        {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
 
-                {searchedTodos.map(todo => (
-                    /*Propiedad key: un identificador unico dentro de una lista*/
-                    <TodoItem 
-                    key={todo.text} 
-                    text={todo.text} 
-                    completed={todo.completed} 
-                    onComplete={() => completeTodo(todo.text)}
-                    onDelete={() => deleteTodo(todo.text)}
-                    />
-                ))}
-            </TodoList> 
+                        {searchedTodos.map(todo => (
+                            /*Propiedad key: un identificador unico dentro de una lista*/
+                            <TodoItem 
+                            key={todo.text} 
+                            text={todo.text} 
+                            completed={todo.completed} 
+                            onComplete={() => completeTodo(todo.text)}
+                            onDelete={() => deleteTodo(todo.text)}
+                            />
+                        ))}
+                    </TodoList>
+                )} 
+            </TodoContext.Consumer>
             
             <CreateTodoButton />
             
