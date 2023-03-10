@@ -8,6 +8,9 @@ import { CreateTodoButton } from '../CreateTodoButton'
 
 function AppUI({
     /* Recepcion de las propiedades declaradas en App */
+    loading,
+    error,
+    /* ^ Recepcion de los 2 estados de efecto ^ */
     totalTodos,
     completedTodos,
     searchValue,
@@ -25,16 +28,23 @@ function AppUI({
             <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
             
             <TodoList>
-            {searchedTodos.map(todo => (
-                /*Propiedad key: un identificador unico dentro de una lista*/
-                <TodoItem 
-                key={todo.text} 
-                text={todo.text} 
-                completed={todo.completed} 
-                onComplete={() => completeTodo(todo.text)}
-                onDelete={() => deleteTodo(todo.text)}
-                />
-            ))}
+                {/* Evaluar si hay algiun error, renderiza un mensaje */}
+                {error && <p>Desespérate, hubo un error...</p>}
+                {/* Renderiza un mensaje cuando esta trabajando para mostrar los datos */}
+                {loading && <p>Estamos cargando, no desesperes...</p>}
+                {/* Evaluar la carga y el tamano de los TODOs, renderiza un mensaje */}
+                {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+
+                {searchedTodos.map(todo => (
+                    /*Propiedad key: un identificador unico dentro de una lista*/
+                    <TodoItem 
+                    key={todo.text} 
+                    text={todo.text} 
+                    completed={todo.completed} 
+                    onComplete={() => completeTodo(todo.text)}
+                    onDelete={() => deleteTodo(todo.text)}
+                    />
+                ))}
             </TodoList> 
             
             <CreateTodoButton />

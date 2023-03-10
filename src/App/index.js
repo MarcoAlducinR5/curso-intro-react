@@ -15,7 +15,8 @@ import {useDeleteTodo} from '../Hooks/useDeleteTodo';
 
 function App() {
   /* Declaracion de un hook principal para recibir del Hook personalizado */
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  /* Renombre de viertos estados del localStorage */
+  const {item: todos, saveItem: saveTodos, loading, error} = useLocalStorage('TODOS_V1', []);
 
   /* Hook personalizado para la busqueda de TODOS */
   const [completedTodos, totalTodos, searchedTodos, searchValue, setSearchValue] = useSearchTodos(todos);
@@ -25,10 +26,19 @@ function App() {
 
   /* Hook personalizado para la eliminacion de algun TODO */
   const [deleteTodo] = useDeleteTodo(todos, saveTodos);
+
+  /*Jugando con el React.useEffect */
+  /* console.log("render antes del use effect");
+  React.useEffect(() => {
+    console.log("use effect");
+  }, [totalTodos]);
+  console.log("render despues del use effect"); */
  
   return (
     /* Pasando las propiedades a AppUI, declarandose como un componente mas*/
     <AppUI
+      loading={loading}
+      error={error}
       totalTodos={totalTodos}
       completedTodos={completedTodos}
       searchValue={searchValue}
