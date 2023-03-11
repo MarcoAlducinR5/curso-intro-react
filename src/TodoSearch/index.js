@@ -1,8 +1,12 @@
 import React from 'react';
+/* Se importa el contexto para usar sus valores en TodoSearch */
+import { TodoContext } from '../Context';
 import './TodoSearch.css';
 
 /*Consumiendo las props del estado en TodoSearch */
-function TodoSearch({searchValue, setSearchValue}) {
+function TodoSearch() {
+  /* Trayendo los valores del contexto para usarlos en TodoSearch */
+  const {searchValue, setSearchValue} = React.useContext(TodoContext);
 
   /*Evento que realiza un filtrado de la lista cada que escriba en el input */
   const onSearchValueChange = (event) => {

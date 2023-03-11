@@ -1,6 +1,6 @@
 import React from 'react';
 /* Importamos el Provider para usarlo en la App.js */
-import { TodoProvider } from '../TodoContext';
+import { TodoProvider } from '../Context';
 /* Separacion de la parte grafica en un archivo aparte */
 import { AppUI } from './AppUI';
 
