@@ -7,12 +7,16 @@ import { TodoItem } from '../TodoItem'
 import { CreateTodoButton } from '../CreateTodoButton'
 /* Importamos el contexto para usarlo en los componentes de la aplicacion */
 import { TodoContext } from '../Context';
+/* Importar el Modal generado */
+import { Modal } from '../Modal';
+import { Contenido } from '../Modal/Contenido';
 
 function AppUI(){
     /* Se declara useContext con el objeto de valores para poder */
     /* usarlos a lo largo del proyecto sin necesidad de pasar props*/
     /* en cada componente */
-    const {error, loading, searchedTodos, completeTodo, deleteTodo} 
+    const {error, loading, searchedTodos, completeTodo, deleteTodo, 
+        openModal} 
     = React.useContext(TodoContext);
 
     return (
@@ -43,6 +47,14 @@ function AppUI(){
                     />
                 ))}
             </TodoList>
+
+            {/* Consultar si existe openModal, si es true se renderiza el Modal */}
+            {!!openModal && (
+                /* Declaracion de Modal en el AppUI */
+                <Modal>
+                    <Contenido />
+                </Modal>
+            )}
             
             <CreateTodoButton />
             
