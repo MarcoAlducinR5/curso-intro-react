@@ -9,7 +9,7 @@ import { CreateTodoButton } from '../CreateTodoButton'
 import { TodoContext } from '../Context';
 /* Importar el Modal generado */
 import { Modal } from '../Modal';
-import { Contenido } from '../Modal/Contenido';
+import { TodoForm } from '../TodoForm';
 
 function AppUI(){
     /* Se declara useContext con el objeto de valores para poder */
@@ -52,7 +52,7 @@ function AppUI(){
             {!!openModal && (
                 /* Declaracion de Modal en el AppUI */
                 <Modal>
-                    <Contenido />
+                    <TodoForm />
                 </Modal>
             )}
             

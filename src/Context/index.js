@@ -4,6 +4,7 @@ import {useLocalStorage} from '../Hooks/useLocalStorage';
 import {useSearchTodos} from '../Hooks/useSearchTodos';
 import {useCompleteTodo} from '../Hooks/useCompleteTodo';
 import {useDeleteTodo} from '../Hooks/useDeleteTodo';
+import {useAddTodo} from '../Hooks/useAddTodo';
 
 /* Declarar el contexto donde podemos pasar los valores a los Componentes */
 const TodoContext = React.createContext();
@@ -22,6 +23,8 @@ function TodoProvider(props){
   
     /* Hook personalizado para la eliminacion de algun TODO */
     const [deleteTodo] = useDeleteTodo(todos, saveTodos);
+    
+    const [addTodo] = useAddTodo(todos, saveTodos);
 
     /* Hook dl estado para hacer la operacion de la muestra del modal */
     const [openModal, setOpenModal] = React.useState(false);
@@ -40,6 +43,7 @@ function TodoProvider(props){
             searchedTodos,
             completeTodo,
             deleteTodo,
+            addTodo,
             /* Envio de las acciones para el modal */
             openModal,
             setOpenModal,

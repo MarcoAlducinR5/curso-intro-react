@@ -5,6 +5,7 @@
     border-radius: 50px;
     text-align: center;
     margin: 15px 0px 15px 0px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
 }
 /*Accion al seleccionar un input: fondo del input*/
 .TodoSearch:focus{

@@ -1,0 +1,61 @@
+.TodoForm{
+    /* Fondo del modal */
+    background-color: white;
+    color:black;
+    box-shadow: 5px 5px 10px 5px #D2FF3A;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    /* Borde superior del modal */
+    padding: 10px;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
+.TodoForm .todoTXA{
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 50px;
+    text-align: center;
+    margin: 15px;
+    height: 12rem;
+    width: 25rem;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.TodoForm .todoTXA:focus{
+    background: #D2FF3A;
+}
+.TodoForm .exitModal, .TodoForm .addModal{
+    font-size: 15px;
+    margin: 15px 0px 15px 0px;
+    padding: 10px;
+    border-radius: 50px;
+    border: solid 1px white;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 15px 5px #D2FF3A; 
+    box-shadow: 5px 5px 15px 5px #D2FF3A;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
+.TodoForm .exitModal:hover, .TodoForm .addModal:hover{
+    border: solid 1px chocolate;
+    background-color: chocolate;
+    color: white;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
+.TodoForm .exitModal:active, .TodoForm .addModal:active{
+    border: solid 1px #D2FF3A;
+    background-color: #D2FF3A;
+    color: black;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
+.TodoForm .botones{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
