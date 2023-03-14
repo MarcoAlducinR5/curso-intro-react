@@ -1,0 +1,41 @@
+.ModalFondo{
+    background: rgba(32, 35, 41, 0.8);
+    position: fixed;
+    top: -1rem;
+    left: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.exitModal{
+    font-size: 15px;
+    margin: 15px 0px 15px 0px;
+    padding: 10px;
+    border-radius: 50px;
+    border: solid 1px white;
+    font-weight: bold;
+    -webkit-box-shadow: 5px 5px 15px 5px #D2FF3A; 
+    box-shadow: 5px 5px 15px 5px #D2FF3A;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
+.exitModal:hoverr{
+    border: solid 1px chocolate;
+    background-color: chocolate;
+    color: white;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
+.exitModal:active{
+    border: solid 1px #D2FF3A;
+    background-color: #D2FF3A;
+    color: black;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top: solid 5px #D2FF3A;
+}
