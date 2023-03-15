@@ -41,7 +41,7 @@ function useLocalStorage(itemName, initialValue){
       } catch (error) {
         setError(error);
       }
-    }, 1000);
+    }, 3000);
   });
   
     /* Funcion puente que funciona para actualizar tanto el estado como localStorage */

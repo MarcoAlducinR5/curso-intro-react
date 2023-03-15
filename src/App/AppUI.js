@@ -10,13 +10,16 @@ import { TodoContext } from '../Context';
 /* Importar el Modal generado */
 import { Modal } from '../Modal';
 import { TodoForm } from '../TodoForm';
+/* Declaracion del Hook para el Loading Skeleton */
+import { Carga } from '../Carga';
+import { Vacio } from '../Vacio';
+import { Error } from '../Error';
 
 function AppUI(){
     /* Se declara useContext con el objeto de valores para poder */
     /* usarlos a lo largo del proyecto sin necesidad de pasar props*/
     /* en cada componente */
-    const {error, loading, searchedTodos, completeTodo, deleteTodo, 
-        openModal} 
+    const {error, loading, searchedTodos, completeTodo, deleteTodo, openModal} 
     = React.useContext(TodoContext);
 
     return (
@@ -30,11 +33,12 @@ function AppUI(){
             {/* Se elimina el TodoContext.Consumer */}
             <TodoList>
                 {/* Evaluar si hay algiun error, renderiza un mensaje */}
-                {error && <p>Desespérate, hubo un error...</p>}
+                {error && <Error />}
                 {/* Renderiza un mensaje cuando esta trabajando para mostrar los datos */}
-                {loading && <p>Estamos cargando, no desesperes...</p>}
+                {/* Sustituyendo el <p> por el Loading Skeleton */}
+                {loading && <Carga />}
                 {/* Evaluar la carga y el tamano de los TODOs, renderiza un mensaje */}
-                {(!loading && !searchedTodos.length) && <p>¡Crea tu primer TODO!</p>}
+                {(!loading && !searchedTodos.length) && <Vacio />}
 
                 {searchedTodos.map(todo => (
                     /*Propiedad key: un identificador unico dentro de una lista*/

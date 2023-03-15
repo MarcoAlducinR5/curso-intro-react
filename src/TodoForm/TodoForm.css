@@ -9,7 +9,7 @@
     padding: 10px;
     border-top-left-radius: 25px;
     border-bottom-right-radius: 25px;
-    border-top: solid 5px #D2FF3A;
+    border-top: solid 5px rgb(210, 255, 58);
 }
 .TodoForm .todoTXA{
     font-size: 15px;
