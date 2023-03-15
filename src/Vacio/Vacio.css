@@ -1,6 +1,8 @@
-.vacio .img{
+.vacio h1{
     padding-bottom: 1rem;
-    width: 25%;
+    width: 100%;
+    font-size: 10rem;
+    color: #D2FF3A;
 }
 .vacio figcaption{
     padding: 1rem;

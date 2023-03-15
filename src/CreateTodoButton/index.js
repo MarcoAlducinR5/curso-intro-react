@@ -1,6 +1,7 @@
 import React from 'react';
 import './CreateTodoButton.css';
 import { TodoContext } from '../Context';
+import { IconAdd } from '../Icons/IconAdd';
 
 function CreateTodoButton() {
 
@@ -15,7 +16,7 @@ function CreateTodoButton() {
     /*Envolver nuestro codigo en una arrow funcion*/
     /*() => console.log("click!")*/
     /*Cuando se envie un argumento al evento */
-    <button className="CreateTodoButton" onClick={onClickButton}>+</button>
+    <button type='button' className="CreateTodoButton" onClick={onClickButton}><IconAdd /></button>
   );
 }
 

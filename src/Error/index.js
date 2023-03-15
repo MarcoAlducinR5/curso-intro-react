@@ -1,5 +1,5 @@
-import React from "react"
-import img from "../images/error.png";
+import React from "react";
+import { IconAlert } from "../Icons/IconAlert";
 import './Error.css';
 
 function Error(){
@@ -7,7 +7,7 @@ function Error(){
     return (
         <figure className="error">
             <figcaption>Desespérate, hubo un error...</figcaption>
-            <img className="img" src={img} alt="Desespérate, hubo un error..." />
+            <IconAlert />
         </figure>
     );
 

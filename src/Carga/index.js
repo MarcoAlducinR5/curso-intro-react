@@ -15,8 +15,8 @@ function Carga({props}){
             {...props}
         >
             <rect x="8" y="16" rx="4" ry="4" width="15" height="25" />
-            <rect x="30" y="55" rx="4" ry="4" width="457" height="23" />
-            <rect x="8" y="94" rx="4" ry="4" width="15" height="25" />
+            <rect x="30" y="45" rx="4" ry="4" width="457" height="23" />
+            <rect x="8" y="74" rx="4" ry="4" width="15" height="25" />
         </ContentLoader>
     );
 

@@ -22,7 +22,8 @@
     background-color: red;
     color: white;
 }
-.TodoItem .Eliminar:active{
+.TodoItem .Eliminar:active, 
+.TodoItem .pendiente:active{
     border: solid 1px #D2FF3A;
     background-color: #D2FF3A;
     color: black;
@@ -33,7 +34,7 @@
     /*Define la distribucion del espacio en el elemento a lo largo de su eje: alinear desde el final*/
     justify-content: flex-end;
     /*Define el margen en linea de inicio y al final*/
-    margin-inline-start: 95%;
+    margin-inline-start: 93%;
     margin-inline-end: 10px;
     border: solid 1px white;
 }
@@ -43,13 +44,13 @@
     color: white;
     display: flex;
     justify-content: flex-end;
-    margin-inline-start: 95%;
+    margin-inline-start: 93%;
     margin-inline-end: 10px;
 }
 .TodoItem .pendiente{
     display: flex;
     justify-content: flex-end;
-    margin-inline-start: 95%;
+    margin-inline-start: 93%;
     margin-inline-end: 10px;
     border: solid 1px white;
 }
